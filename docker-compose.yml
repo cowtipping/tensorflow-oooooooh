@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    command: /bin/bash -c "tail -f /dev/null"                             # keep container running
+    # command: ["python", "/app/script.py"]                               # run a script
+    # command: /bin/bash -c "python /app/script.py && tail -f /dev/null"  # run a script and keep container running
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
