@@ -1,5 +1,6 @@
 """Visualise the model's predictions."""
 
+import json
 from tensorflow.keras.models import load_model
 import matplotlib
 
@@ -13,6 +14,13 @@ model = load_model("mymodel.keras")
 
 # Make predictions on the test set
 predictions = model.predict(x_test)
+
+# Convert predictions to a list
+predictions_list = predictions.tolist()
+
+# Save to a JSON file
+with open("predictions.json", "w") as f:
+    json.dump(predictions_list, f)
 
 
 # Function to plot images and their labels
@@ -49,4 +57,4 @@ for i in range(num_images):
     plot_image(i, predictions[i], y_test, x_test)
 plt.tight_layout()
 # plt.show()
-plt.savefig("output.png")
+plt.savefig("predictions.png")

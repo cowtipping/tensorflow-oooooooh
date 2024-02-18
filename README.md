@@ -5,9 +5,10 @@ Playing with ML things.
 ## What Are All These Files?
 
 ```python
-tensortest.py   # Checks if a GPU is available.
-main.py         # Builds a model from the MNIST dataset and saves it as mymodel.keras.
-visual.py       # Reads the model and saves the visual to output.png.
+tensortest.py           # Checks if a GPU is available.
+main.py                 # Builds a model from the MNIST dataset and saves it as mymodel.keras.
+model_prediction.py     # Reads the model and saves the model's prediction data to predictions.png and predictions.json.
+docker_build.bat        # For the lazy. Double click to build the Docker file (you will still need to manually attach the terminal shell - see below)
 ```
 
 ### Docker Things
@@ -32,7 +33,7 @@ The volumes directive in the `docker-compose.yml` file tells Docker to mount you
 
 - Load Docker Desktop.
 - Build and run with `docker-compose up --build`
-- Just run it `docker-compose up`
+- Or if it's already built, just run it `docker-compose up`
 - Or just use the Docker extension in VS Code.
 
 To run your Python script inside the Docker container, you need to attach a shell to the running container and run your script in that shell. Here's how you can do it:
